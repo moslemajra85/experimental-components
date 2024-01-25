@@ -1,0 +1,14 @@
+.car {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  padding: 12px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+}
+ 

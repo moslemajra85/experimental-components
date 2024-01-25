@@ -4,18 +4,22 @@ import { IoIosCloseCircle } from 'react-icons/io';
 
 const CarList = () => {
   let { carsList, searchTerm } = useSelector((state) => state.cars);
-  carsList = carsList.filter((car) => {
-    return car.name.includes(searchTerm);
-  });
+  const { name } = useSelector((state) => state.carForm);
 
+  carsList = carsList.filter((car) => {
+    return car.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
   const dispatch = useDispatch();
   const handleRemoveCar = (id) => {
     dispatch(removeCar(id));
   };
 
   const renderedCars = carsList.map((car) => {
+    const highlight =
+      car.name.toLowerCase() === name.toLowerCase() ? 'highlight' : '';
+
     return (
-      <li className="car" key={car.id}>
+      <li className={` car box ${highlight}`} key={car.id}>
         <p>
           {car.name} - ${car.cost}
         </p>

@@ -1,9 +1,18 @@
-import React from 'react'
+import { useSelector } from 'react-redux';
 
 const CarValue = () => {
-  return (
-    <div>CarValue</div>
-  )
-}
+  let { searchTerm, carsList } = useSelector((state) => state.cars);
 
-export default CarValue
+  const total = carsList
+    .filter((car) => car.name.includes(searchTerm))
+    .reduce((acc, curr) => acc + curr.cost, 0);
+
+  return (
+    <div className="cost box columns">
+      <span className='column'>Total Cost: </span>
+      <span className='column'>${total}</span>
+    </div>
+  );
+};
+
+export default CarValue;

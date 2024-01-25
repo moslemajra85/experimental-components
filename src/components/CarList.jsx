@@ -3,7 +3,11 @@ import { removeCar } from '../store';
 import { IoIosCloseCircle } from 'react-icons/io';
 
 const CarList = () => {
-  const { carsList } = useSelector((state) => state.cars);
+  let { carsList, searchTerm } = useSelector((state) => state.cars);
+  carsList = carsList.filter((car) => {
+    return car.name.includes(searchTerm);
+  });
+
   const dispatch = useDispatch();
   const handleRemoveCar = (id) => {
     dispatch(removeCar(id));

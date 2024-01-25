@@ -13,6 +13,7 @@ const App = () => {
       <div className='mt-3'>
         <CarList />
       </div>
+      <br />
       <CarValue />
     </div>
   );
